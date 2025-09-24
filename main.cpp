@@ -26,20 +26,26 @@ int main(int argc,char** argv)
    // cout<<mnb<<"\n";
    // cout<<"ur main number " << std::setprecision(preci) << mn << " with size of " << nmlet <<"\n";
     if (choo_ser==1){
-       cout<<"enter ur new nine pattern to use \n";
-       cin>>niine;
-       cout<<"ur new nine pattern will be ::== " << niine <<"\n";
+       //cout<<"enter ur new nine pattern to use \n";
+       //cin>>niine;
+       //cout<<"ur new nine pattern will be ::== " << niine <<"\n";
+       niine=stold(argv[4]);
     }
-    cout<<"The main sqrt " << std::setprecision(preci) << sqrt(mn) <<"\n";
     long double rst_d=0;
     rst_d=(long double)mn/(long double)niine;
-    cout<<"The result is " << std::setprecision(preci) << rst_d <<"\n";
+    cout<<"\n";
+    cout<<"of " << std::setprecision(preci) << mn << " / " << std::setprecision(preci) << niine << " ::== ";
+    cout<< std::setprecision(preci) << rst_d <<"\n";
+    cout<<"\n";
     long double fractpart,intpart;
     fractpart=modf(rst_d,&intpart);
     cout<<std::setprecision(preci) << intpart << " + " << std::setprecision(preci) << fractpart << " ::== " << std::setprecision(preci)<<rst_d <<"\n";
+    cout<<"\n";
     long double sqtr=0;
     sqtr=sqrt(rst_d);
+    cout<<"The main sqrt " << std::setprecision(preci) << sqrt(mn) <<" and ";
     cout<<"ur sqrt is " << std::setprecision(preci) << sqtr <<"\n";
+    cout<<"\n";
     string slk;
     slk.clear();
     stringstream smk;
