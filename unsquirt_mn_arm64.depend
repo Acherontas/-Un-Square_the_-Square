@@ -1,0 +1,8 @@
+# depslib dependency file v1.0
+1758694792 source:/home/acherontas/codeblocks/unsquirt_mn_arm64/main.cpp
+	<iostream>
+	<iomanip>
+	"math.h"
+	<thread>
+	"sstream"
+
