@@ -27,6 +27,7 @@ using namespace std;
     long double sqtr=0;
     long double xmln=0;
     long double rxml=0;
+    long double int_ten=0;
     int preci=0;
     int choo_ser=0;
     int nmlet=0;
@@ -73,6 +74,7 @@ int repeater(long double nine){
       xmln=sqtr*xl;
       rxml=xmln*xmln;
       fractpart=modf(rxml,&intpart);
+
       if(preci<i){preci=i;}
       stringstream xrm;
       xrm<<std::setprecision(preci)<<intpart;
@@ -86,8 +88,28 @@ int repeater(long double nine){
                       }
       if(lin==tmc){lct+= " ==LOCATED "; lct+=" with size of "; lct+=to_string(tmc); lct+=" as main and " ; lct+=to_string(lin); lct+=" as this "; st=1;}
       cout<<"@i " <<std::setprecision(preci) << xl << " rst " << std::setprecision(preci) << xmln << " "  ;
-      if(st==0){cout<<" -------> "<<std::setprecision(preci) << rxml << " " ;}
-      if(st==1 && fnd==0){cout<<" -------> " << rxml <<" " << " vs " << mn << " " << lct <<"\n"; st=0; fnd=1;}
+      if(st==0){
+                cout<<" -------> "<<std::setprecision(preci) << rxml << " " ;
+                fractpart=modf(rxml,&intpart);
+                int_ten=intpart;
+                if(int_ten==mn){cout<<"SAME with " << intpart << " \n ";goto A;}
+                rxml=rxml*10;
+                fractpart=modf(rxml,&intpart);
+                int_ten=intpart;
+                if(int_ten==mn){cout<<"Same * 10 with " << intpart << " *10 " << int_ten <<"\n";}
+                A:
+                cout<<"";
+               }
+      if(st==1 && fnd==0){
+                        cout<<" -------> " << rxml <<" " << " vs " << mn << " " << lct <<"\n";
+                        int_ten=intpart;
+                        if(int_ten==mn){cout<<"SAME with " << intpart << " \n ";goto B;}
+                        rxml=rxml*10;
+                        fractpart=modf(rxml,&intpart);
+                        if(int_ten==mn){cout<<"Same * 10 with " << intpart << " *10 " << int_ten <<"\n";}
+                        B:
+                        st=0; fnd=1;
+                        }
       cout<<"\n";
       if(st==1){break;}
     }
