@@ -31,6 +31,13 @@ int main(int argc,char** argv)
        //cout<<"ur new nine pattern will be ::== " << niine <<"\n";
        niine=stold(argv[4]);
     }
+    stringstream mti;
+    string inmn;
+    inmn.clear();
+    mti<<std::setprecision(preci)<<mn;
+    inmn+=mti.str();
+    int lin=0;
+    lin=inmn.size();
     long double rst_d=0;
     rst_d=(long double)mn/(long double)niine;
     cout<<"\n";
@@ -59,17 +66,28 @@ int main(int argc,char** argv)
     long double rxml=0;
     string lct;
     int st=0;int fnd=0;
+    string mct;int tmc=0;
     for(int i=1;i<=let+1;i++)
     {
       xl=10;
       lct.clear();
+      mct.clear();
       xl=pow(xl,i);
       xmln=sqtr*xl;
       rxml=xmln*xmln;
       fractpart=modf(rxml,&intpart);
       if(preci<i){preci=i;}
+      stringstream xrm;
+      xrm<<std::setprecision(preci)<<intpart;
+      mct+=xrm.str();
+      tmc=mct.size();
       //cout<<std::setprecision(preci) << intpart << " + " << fractpart << " ::== " << rxml <<"\n";
-      if(intpart>=mn){lct+=" ~= LOCATED";st=1;}
+      if(intpart>=mn ){lct+=" ~= LOCATED ";
+                      if(tmc>lin){lct+= " bigger "; lct+=to_string(tmc); lct+=" as main and " ; lct+=to_string(lin); lct+=" as this ";}
+                      if(tmc<lin){lct+= " smaller "; lct+=to_string(tmc); lct+=" as main and " ; lct+=to_string(lin); lct+=" as this "; }
+                      st=1;
+                      }
+      if(lin==tmc){lct+= " ==LOCATED "; lct+=" with size of "; lct+=to_string(tmc); lct+=" as main and " ; lct+=to_string(lin); lct+=" as this "; st=1;}
       cout<<"@i " <<std::setprecision(preci) << xl << " rst " << std::setprecision(preci) << xmln << " "  ;
       if(st==0){cout<<" -------> "<<std::setprecision(preci) << rxml << " " ;}
       if(st==1 && fnd==0){cout<<" -------> " << rxml <<" " << " vs " << mn << " " << lct <<"\n"; st=0; fnd=1;}
